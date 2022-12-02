@@ -23,6 +23,7 @@ const handler = async (req, res) => {
 
   if (url) {
     fetch(url, {
+      method: req.method,
       headers: {
         'Authorization': req.headers['authorization'],
         'Content-Type': req.headers['content-type'],

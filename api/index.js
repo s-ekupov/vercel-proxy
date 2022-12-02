@@ -16,7 +16,7 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res)
 }
 
-const handler = (req, res) => {
+const handler = async (req, res) => {
   const url = req.query['url'];
   const body = req.body;
   const headers = req.headers;
@@ -25,7 +25,11 @@ const handler = (req, res) => {
 
   if (url) {
     fetch(url, {
-      headers,
+      headers: {
+        'Authorization': req.headers['authorization'],
+        'Content-Type': req.headers['content-type'],
+        'Accept': req.headers['accept']
+      },
       body
     })
     .then(result => result.json())

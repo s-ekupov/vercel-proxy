@@ -18,14 +18,23 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = (req, res) => {
-  let url = 'https://api.github.com/users/github'
-  if (req.body && req.body.url) {
-    url = req.body.url
-  }
-  fetch(url)
+  // let url = 'https://api.github.com/users/github'
+  // if (req.body && req.body.url) {
+  //   url = req.body.url
+  // }
+  const url = location.pathname.slice(1);
+  const body = req.body;
+  const headers = req.headers;
+
+  if (url) {
+    fetch(url, {
+      headers,
+      body
+    })
     .then(result => result.json())
     .then(json => res.send(json))
     .catch(e => res.send(e))
+  }
 }
 
 module.exports = allowCors(handler)

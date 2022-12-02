@@ -22,7 +22,7 @@ const handler = (req, res) => {
   // if (req.body && req.body.url) {
   //   url = req.body.url
   // }
-  const url = location.pathname.slice(1);
+  const url = new URLSearchParams(location.search).get('url');
   const body = req.body;
   const headers = req.headers;
 

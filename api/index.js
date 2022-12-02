@@ -6,10 +6,7 @@ const allowCors = fn => async (req, res) => {
   // another common pattern; but there might not be origin (for instance call from browser)
   // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
+  res.setHeader('Access-Control-Allow-Headers', '*')
   console.log('Request: ', req);
   console.log('Response: ', res);
   if (req.method === 'OPTIONS') {

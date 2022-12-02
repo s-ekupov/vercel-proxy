@@ -20,13 +20,11 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = (req, res) => {
-  // let url = 'https://api.github.com/users/github'
-  // if (req.body && req.body.url) {
-  //   url = req.body.url
-  // }
-  const url = new URLSearchParams(location.search).get('url');
+  const url = req.query['url'];
   const body = req.body;
   const headers = req.headers;
+
+  console.log(url, body, headers);
 
   if (url) {
     fetch(url, {

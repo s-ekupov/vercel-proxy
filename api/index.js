@@ -19,7 +19,7 @@ const handler = async (req, res) => {
   const body = req.body;
   const headers = req.headers;
 
-  console.log(url, body, headers);
+  console.log(url, body, req.headers['authorization'], req.headers['content-type'],req.headers['accept']);
 
   if (url) {
     fetch(url, {

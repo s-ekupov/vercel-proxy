@@ -7,8 +7,6 @@ const allowCors = fn => async (req, res) => {
   // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST')
   res.setHeader('Access-Control-Allow-Headers', '*')
-  console.log('Request: ', req);
-  console.log('Response: ', res);
   if (req.method === 'OPTIONS') {
     res.status(200).end()
     return
@@ -33,7 +31,10 @@ const handler = async (req, res) => {
       body
     })
     .then(result => result.json())
-    .then(json => res.send(json))
+    .then(json => {
+      console.log('Response: ', json);
+      return res.send(json)
+    })
     .catch(e => res.send(e))
   }
 }

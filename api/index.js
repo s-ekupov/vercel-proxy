@@ -38,7 +38,10 @@ const handler = async (req, res) => {
       console.log('JSON: ', json);
       return res.send(json)
     })
-    .catch(e => res.send(e))
+    .catch(e => {
+      console.log('Error: ', e)
+      return res.send(e)
+    })
   }
 }
 

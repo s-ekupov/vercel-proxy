@@ -30,9 +30,12 @@ const handler = async (req, res) => {
       },
       body
     })
-    .then(result => result.json())
+    .then(result => {
+      console.log('Result: ', result)
+      return result.json()
+    })
     .then(json => {
-      console.log('Response: ', json);
+      console.log('JSON: ', json);
       return res.send(json)
     })
     .catch(e => res.send(e))

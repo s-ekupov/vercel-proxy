@@ -16,7 +16,7 @@ const allowCors = fn => async (req, res) => {
 
 const handler = async (req, res) => {
   const url = req.query['url'];
-  const body = req.body;
+  const body = JSON.stringify(req.body);
   const headers = req.headers;
 
   console.log(url, body, req.headers['authorization'], req.headers['content-type'],req.headers['accept']);
